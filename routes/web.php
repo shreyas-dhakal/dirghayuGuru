@@ -1,13 +1,20 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PackageController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\SiteSettingController;
 
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Put all these routes inside the Route::middleware('auth') to enable authorize access
 
 Route::get('/department', [DepartmentController::class, 'index'])->name('department.index');
 Route::get('/department/create', [DepartmentController::class, 'create'])->name('department.create');
@@ -29,3 +36,36 @@ Route::post('/package', [PackageController::class, 'store'])->name('package.stor
 Route::get('/package/{package}/edit', [PackageController::class, 'edit'])->name('package.edit');
 Route::put('/package/{package}/update', [PackageController::class, 'update'])->name('package.update');
 Route::delete('/package/{package}/delete', [PackageController::class, 'delete'])->name('package.delete');
+
+Route::get('/slider', [SliderController::class, 'index'])->name('slider.index');
+Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
+Route::post('/slider', [SliderController::class, 'store'])->name('slider.store');
+Route::get('/slider/{slider}/edit', [SliderController::class, 'edit'])->name('slider.edit');
+Route::put('/slider/{slider}/update', [SliderController::class, 'update'])->name('slider.update');
+Route::delete('/slider/{slider}/delete', [SliderController::class, 'delete'])->name('slider.delete');
+
+Route::get('/testimonial', [TestimonialController::class, 'index'])->name('testimonial.index');
+Route::get('/testimonial/create', [TestimonialController::class, 'create'])->name('testimonial.create');
+Route::post('/testimonial', [TestimonialController::class, 'store'])->name('testimonial.store');
+Route::get('/testimonial/{testimonial}/edit', [TestimonialController::class, 'edit'])->name('testimonial.edit');
+Route::put('/testimonial/{testimonial}/update', [TestimonialController::class, 'update'])->name('testimonial.update');
+Route::delete('/testimonial/{testimonial}/delete', [TestimonialController::class, 'delete'])->name('testimonial.delete');
+
+Route::get('/sitesetting', [SiteSettingController::class, 'index'])->name('sitesetting.index');
+Route::get('/sitesetting/create', [SiteSettingController::class, 'create'])->name('sitesetting.create');
+Route::post('/sitesetting', [SiteSettingController::class, 'store'])->name('sitesetting.store');
+Route::get('/sitesetting/{sitesetting}/edit', [SiteSettingController::class, 'edit'])->name('sitesetting.edit');
+Route::put('/sitesetting/{sitesetting}/update', [SiteSettingController::class, 'update'])->name('sitesetting.update');
+Route::delete('/sitesetting/{sitesetting}/delete', [SiteSettingController::class, 'delete'])->name('sitesetting.delete');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

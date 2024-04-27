@@ -44,8 +44,6 @@ class PackageController extends Controller
     }
 
     public function delete(Package $package){
-        // Before deleting the package, you may want to handle the related doctors
-        $package->doctors()->delete(); // Delete related doctors
         $package->delete(); // Delete package
         return redirect(route('package.index'))->with('success','Package deleted successfully');
     }
