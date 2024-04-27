@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,9 +7,8 @@ use App\Models\Department;
 class DepartmentController extends Controller
 {
     public function index(){
-        $departments = Department::all();
+        $departments = Department::with('doctors')->get(); // Eager load doctors relationship
         return view('department.index',['departments' => $departments]);
-        
     }
 
     public function create(){
@@ -40,13 +38,14 @@ class DepartmentController extends Controller
             'description' => 'nullable'
         ]);
         
-        $department-> update($data);
+        $department->update($data);
         return redirect(route('department.index'))->with('success','Department updated successfully');
-
     }
 
     public function delete(Department $department){
-        $department->delete();
+        // Before deleting the department, you may want to handle the related doctors
+        $department->doctors()->delete(); // Delete related doctors
+        $department->delete(); // Delete department
         return redirect(route('department.index'))->with('success','Department deleted successfully');
     }
 }

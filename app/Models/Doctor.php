@@ -5,16 +5,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
-class Department extends Model
+class Doctor extends Model
 {
     use HasFactory;
-
     use Sluggable;
 
     protected $fillable = [
             'name',
+            'designation',
             'image',
-            'description'
+            'description',
+            'department_id' // Add department_id to the fillable fields
     ];
 
     public function Sluggable():array
@@ -28,9 +29,8 @@ class Department extends Model
         ];
     }
 
-    public function doctors()
+    public function department()
     {
-        return $this->hasMany(Doctor::class); // Define the relationship: Department has many Doctors
+        return $this->belongsTo(Department::class); // Define the relationship: Doctor belongs to a Department
     }
 }
-
