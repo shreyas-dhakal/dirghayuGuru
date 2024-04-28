@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/department', [DepartmentController::class, 'index'])->name('department.index');
 Route::get('/department/create', [DepartmentController::class, 'create'])->name('department.create');
 Route::post('/department', [DepartmentController::class, 'store'])->name('department.store');
