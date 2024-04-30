@@ -11,19 +11,19 @@
         @csrf
         @method('post')
         <div class="form-group">
-            <label for="name">Name:</label>
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="phone">Phone Number:</label>
+            <label for="phone">Phone Number</label>
             <input type="text" id="phone" name="phone" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="department">Department:</label>
+            <label for="department">Department</label>
             <select id="department" name="department" class="form-control">
                 <option value="">Select Department</option>
                 @foreach ($departments as $department)

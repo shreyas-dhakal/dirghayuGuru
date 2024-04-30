@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Department;
+use App\Models\Doctor;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentConfirmation;
 
 class AppointmentController extends Controller
 {
@@ -30,12 +35,27 @@ class AppointmentController extends Controller
             'doctor' => 'required|exists:doctors,id',
         ]);
 
-        $data['department_id'] = $request->input('department');
-        $data['doctor_id'] = $request ->input('doctor');
+        $department = Department::findOrFail($request->input('department'));
+        $doctor = Doctor::findOrFail($request->input('doctor'));
 
-        $newAppointment = Appointment::create($data);
+        $newAppointment = Appointment::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'department_id' => $department->id,
+            'doctor_id' => $doctor->id,
+            'confirmation_token' => Str::random(40),
+        ]);
+    
+        // Send confirmation email
+        Mail::to($data['email'])->send(new AppointmentConfirmation([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'department' => $department,
+            'doctor' => $doctor,
+        ]));
 
-        return redirect(route('appointment.index'));
+        return redirect()->route('appointment.index');
     }
-
 }
