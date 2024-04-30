@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Book an Appointment</title>
 </head>
 <body>
     <form method="POST" action="{{ route('appointment.store') }}">
@@ -13,6 +13,15 @@
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" class="form-control">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
@@ -66,8 +75,6 @@
             }
         });
     </script>
-    
-    
     
 </body>
 </html>

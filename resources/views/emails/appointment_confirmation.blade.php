@@ -6,6 +6,7 @@
 
 <ul>
     <li>Name: {{ $data['name'] }}</li>
+    <li>Gender: {{ $data['gender'] }}</li>
     <li>Email: {{ $data['email'] }}</li>
     <li>Phone: {{ $data['phone'] }}</li>
     <li>Department: {{ $data['department']->name }}</li>

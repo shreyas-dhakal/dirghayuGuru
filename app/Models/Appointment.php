@@ -10,6 +10,7 @@ class Appointment extends Model
 
     protected $fillable = [
         'name',
+        'gender',
         'email',
         'phone',
         'department_id',

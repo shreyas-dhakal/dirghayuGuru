@@ -21,17 +21,28 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Gender</th>
                     <th>Phone Number</th>
                     <th>Department</th>
                     <th>Doctor</th>
+                    <th>Status</th>
+                    
                 </tr>
                 @foreach ($appointments as $appointment)
                     <tr>
                         <td>{{ $appointment->name }}</td>
                         <td>{{ $appointment->email }}</td>
+                        <td>{{ $appointment->gender }}</td>
                         <td>{{ $appointment->phone }}</td>
-                        <td>{{ $appointment->department->name }}</td> <!-- Access department name via relationship -->
-                        <td>{{ $appointment->doctor->name }}</td> <!-- Access doctor name via relationship -->
+                        <td>{{ $appointment->department->name }}</td>
+                        <td>{{ $appointment->doctor->name }}</td>
+                        <td>
+                        <form method="post" action="{{ url('/appointment/'.$appointment->id.'/archive') }}">
+                            @csrf
+                            @method('POST')
+                            <button type="submit">Done</button>
+                        </form>
+                        </td>
                     </tr>
                 @endforeach
             </table>
