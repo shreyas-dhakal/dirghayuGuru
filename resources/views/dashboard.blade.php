@@ -10,12 +10,18 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h1>{{ __("You're logged in!") }}</h1><br>
-                <a href="{{route('department.index')}}">Departments</a><br>
-                <a href="{{route('doctor.index')}}">Doctors</a><br>
-                <a href="{{route('package.index')}}">Packages</a><br>
-                <a href="{{route('slider.index')}}">Sliders</a><br>
-                <a href="{{route('testimonial.index')}}">Testimonials</a><br>
-                <a href="{{route('sitesetting.index')}}">Site Settings</a><br>         
+                    <div class="sidebar">
+                        <ul>
+                            <li><a href="{{ route('department.index') }}">Departments</a></li>
+                            <li><a href="{{ route('doctor.index') }}">Doctors</a></li>
+                            <li><a href="{{ route('package.index') }}">Packages</a></li>
+                            <li><a href="{{ route('slider.index') }}">Sliders</a></li>
+                            <li><a href="{{ route('testimonial.index') }}">Testimonials</a></li>
+                            <li><a href="{{ route('sitesetting.index') }}">Site Settings</a></li>
+                            <li><a href="{{ route('user.index') }}">Users</a></li>
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -48,4 +48,9 @@ class DepartmentController extends Controller
         $department->delete(); // Delete department
         return redirect(route('department.index'))->with('success','Department deleted successfully');
     }
+
+    public function getDoctorsByDepartment(Department $department){
+        $doctors = $department->doctors()->get(['id', 'name','designation','nmc_reg','designation','image']); // Fetch doctors for the department
+        return response()->json($doctors);
+        }
 }

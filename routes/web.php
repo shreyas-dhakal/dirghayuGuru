@@ -7,6 +7,8 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\SiteSettingController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AppointmentController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -58,11 +60,24 @@ Route::get('/sitesetting/{sitesetting}/edit', [SiteSettingController::class, 'ed
 Route::put('/sitesetting/{sitesetting}/update', [SiteSettingController::class, 'update'])->name('sitesetting.update');
 Route::delete('/sitesetting/{sitesetting}/delete', [SiteSettingController::class, 'delete'])->name('sitesetting.delete');
 
+Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('appointment.create');
+Route::post('/appointment',[AppointmentController::class,'store'])->name('appointment.store');
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');
+
+Route::get('/doctors/{department}', [DoctorController::class, 'getDoctorsByDepartment']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/{user}/update', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user/{user}/delete', [UserController::class, 'delete'])->name('user.delete');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

@@ -54,4 +54,10 @@ class DoctorController extends Controller
         $doctor->delete();
         return redirect(route('doctor.index'))->with('success','Doctor deleted successfully');
     }
+    
+    public function getDoctorsByDepartment($departmentId)
+    {
+        $doctors = Doctor::where('department_id', $departmentId)->get();
+        return response()->json($doctors);
+    }
 }
