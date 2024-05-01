@@ -39,6 +39,9 @@
                 @endforeach
             </table>
         </div>
+        <div>
+            <a href="{{ route('appointment.create') }}" class="btn btn-primary">Create an Appointment</a>
+        </div>
     </div>
     </div>
 </x-app-layout>

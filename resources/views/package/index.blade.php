@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('package.create')}}">Create a Package</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -41,6 +38,9 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a href="{{ route('package.create') }}" class="btn btn-primary">Create a Package</a>
     </div>
     </div>
 </x-app-layout>

@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('testimonial.create')}}">Create a Testimonial</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -43,6 +40,9 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a href="{{ route('testimonial.create') }}" class="btn btn-primary">Create a New Testimonial</a>
     </div>
     </div>
 </x-app-layout>

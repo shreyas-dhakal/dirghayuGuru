@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('slider.create')}}">Create a Slider</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -41,6 +38,9 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a href="{{ route('slider.create') }}" class="btn btn-primary">Create a New Slider</a>
     </div>
     </div>
 </x-app-layout>

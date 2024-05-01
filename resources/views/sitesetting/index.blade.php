@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('sitesetting.create')}}">Create a Setting</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -57,6 +54,9 @@
             @endforeach
         </table>
         
+    </div>
+    <div>
+        <a href="{{ route('sitesetting.create') }}" class="btn btn-primary">Settings Entry</a>
     </div>
     </div>
 </x-app-layout>

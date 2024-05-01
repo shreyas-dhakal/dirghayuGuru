@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('user.create')}}">Create a User</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>Name</th>
@@ -43,6 +40,9 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a href="{{ route('user.create') }}" class="btn btn-primary">New User Entry</a>
     </div>
     </div>
 </x-app-layout>

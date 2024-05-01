@@ -8,9 +8,6 @@
         @endif
     </div>
     <div>
-        <div>
-            <a href="{{route('department.create')}}">Create a Department</a>
-        </div>
         <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
@@ -40,6 +37,9 @@
                 </tr>
             @endforeach
         </table>
+    </div>
+    <div>
+        <a href="{{ route('department.create') }}" class="btn btn-primary">New Department Entry</a>
     </div>
     </div>
 </x-app-layout>
