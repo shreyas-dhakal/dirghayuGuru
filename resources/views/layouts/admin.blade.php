@@ -18,8 +18,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            <div class="d-flex"><x-sidebar/>
-            {{-- @include('layouts.navigation') --}}
+            @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -34,7 +33,6 @@
             <main>
                 {{ $slot }}
             </main>
-            </div>
         </div>
     </body>
 </html>

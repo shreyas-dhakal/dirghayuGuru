@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User</title>
-</head>
-<body>
-    <h1>User</h1>
+<x-app-layout>   
+    <div class="container-fluid">
     <div>
         @if(session()->has('success'))
             <div>
@@ -19,7 +11,7 @@
         <div>
             <a href="{{route('user.create')}}">Create a User</a>
         </div>
-        <table border="1">
+        <table border="1" class="table table-striped">
             <tr>
                 <th>Name</th>
                 <th>Email</th>
@@ -38,15 +30,19 @@
                     -->
                     
                     <td>
-                        <a href="{{route('user.edit',['user' => $user])}}">Edit</a>
+                        <form action="{{ route('user.edit', ['user' => $user]) }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                        </form>                        
                     </td>
                     <td><form method="post" action="{{route('user.delete', ['user' => $user])}}">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="Delete"></form></td>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>
     </div>
-</body>
-</html>
+    </div>
+</x-app-layout>

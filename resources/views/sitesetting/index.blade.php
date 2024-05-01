@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Site Settings</title>
-</head>
-<body>
-    <h1>Site Settings</h1>
+<x-app-layout>   
+    <div class="container-fluid">
     <div>
         @if(session()->has('success'))
             <div>
@@ -19,7 +11,7 @@
         <div>
             <a href="{{route('sitesetting.create')}}">Create a Setting</a>
         </div>
-        <table border="1">
+        <table border="1" class="table table-striped">
             <tr>
                 <th>ID</th>
                 <th>Logo</th>
@@ -51,13 +43,14 @@
                 <td>{{$sitesetting->link2}}</td>
                 <td>{{$sitesetting->link3}}</td>
                 <td>
-                    <a href="{{route('sitesetting.edit',['sitesetting' => $sitesetting])}}">Edit</a>
+                    <form action="{{ route('sitesetting.edit', ['sitesetting' => $sitesetting]) }}" method="GET">
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>                        
                 </td>
-                <td>
-                    <form method="post" action="{{route('sitesetting.delete', ['sitesetting' => $sitesetting])}}">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Delete">
+                <td><form method="post" action="{{route('sitesetting.delete', ['sitesetting' => $sitesetting])}}">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
             </tr>
@@ -65,5 +58,5 @@
         </table>
         
     </div>
-</body>
-</html>
+    </div>
+</x-app-layout>

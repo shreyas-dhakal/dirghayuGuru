@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Appointments</title>
-</head>
-<body>
-    <h1>Appointments</h1>
+<x-app-layout>   
+    <div class="container-fluid">
     <div>
         @if(session()->has('success'))
             <div>
@@ -17,7 +9,7 @@
     </div>
     <div>
         <div>
-            <table border="1">
+            <table border="1" class="table table-striped">
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -40,7 +32,7 @@
                         <form method="post" action="{{ url('/appointment/'.$appointment->id.'/archive') }}">
                             @csrf
                             @method('POST')
-                            <button type="submit">Done</button>
+                            <button type="submit" class="btn btn-outline-dark">Done</button>
                         </form>
                         </td>
                     </tr>
@@ -48,5 +40,5 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+    </div>
+</x-app-layout>
