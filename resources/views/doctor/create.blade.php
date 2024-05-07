@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Doctor Create</title>
-    <!-- Add Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-gray-100">
-
+<x-app-layout>         
+    <div class="container-fluid">
     <h1 class="text-2xl font-bold mb-4">Create a Doctor</h1>
     <div class="mb-4">
         @if($errors->any())
@@ -53,5 +42,5 @@
             <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save doctor</button>
         </div>
     </form>
-</body>
-</html>
+    </div>
+</x-app-layout>

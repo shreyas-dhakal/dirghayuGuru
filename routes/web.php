@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\SliderController;
@@ -21,9 +22,7 @@ Route::post('/appointment',[AppointmentController::class,'store'])->name('appoin
 
 Route::get('/doctors/{department}', [DoctorController::class, 'getDoctorsByDepartment']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment.index');

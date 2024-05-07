@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <aside id="sidebar">
+    <aside id="sidebar" class="fixed-sidebar">
         <div class="d-flex">
             <button class="toggle-btn" type="button">
                 <x-application-logo />

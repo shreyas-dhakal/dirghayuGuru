@@ -37,6 +37,7 @@ body {
 }
 
 #sidebar {
+    position: relative;
     width: 70px;
     height: 100vh;
     min-width: 70px;
@@ -45,7 +46,10 @@ body {
     background-color: #726DBE;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
+
+
 
 #sidebar.expand {
     width: 260px;
