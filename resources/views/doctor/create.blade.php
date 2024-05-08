@@ -10,7 +10,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{ route('doctor.store') }}" enctype="multipart/form-data" class="card-body">
+    <form method="POST" action="{{ route('doctor.store') }}" enctype="multipart/form-data" class="card-body" enctype="multipart/form-data">
         @csrf
         @method('post')
         <div class="mb-4">
@@ -28,6 +28,10 @@
         <div class="mb-4">
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
             <input type="text" id="description" name="description" placeholder="Description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+        <div class="mb-4">
+            <label for="nmc_reg" class="block text-sm font-medium text-gray-700">NMC Registration Number</label>
+            <input type="text" id="nmc_reg" name="nmc_reg" placeholder="NMC Registration Number" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div class="mb-4">
             <label for="department_id" class="block text-sm font-medium text-gray-700">Department</label>

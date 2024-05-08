@@ -25,7 +25,7 @@
                     <td>{{$testimonial->title}}</td>
                     <td>{{$testimonial->description}}</td>
                     <td>{{$testimonial->designation}}</td>
-                    <td>{{$testimonial->image}}</td>
+                    <td><img src="{{asset($testimonial->image)}}" alt="Image" style="width: 70px; height:70px"></td>
                     
                     <td>
                         <form action="{{ route('testimonial.edit', ['testimonial' => $testimonial]) }}" method="GET">

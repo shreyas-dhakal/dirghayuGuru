@@ -22,7 +22,7 @@
                     <tr>
                         <td>{{$department->id}}</td>
                         <td>{{$department->name}}</td>
-                        <td>{{$department->image}}</td>
+                        <td><img src="{{asset($department->image)}}" alt="Department" style="width: 70px; height:70px"></td>
                         <td>{{$department->description}}</td>
                         <td>
                             <form action="{{ route('department.edit', ['department' => $department]) }}" method="GET">

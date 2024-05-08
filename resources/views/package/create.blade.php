@@ -11,7 +11,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{route('package.store')}}" class="card-body">
+    <form method="POST" action="{{route('package.store')}}" class="card-body" enctype="multipart/form-data">
         @csrf
         @method('post')
         <div class="mb-4">

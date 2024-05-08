@@ -29,14 +29,14 @@
             @foreach ($sitesettings as $sitesetting)
             <tr>
                 <td>{{$sitesetting->id}}</td>
-                <td>{{$sitesetting->logo}}</td>
+                <td><img src="{{asset($sitesetting->logo)}}" alt="Logo" style="width: 70px; height:70px"></td>
                 <td>{{$sitesetting->name}}</td>
                 <td>{{$sitesetting->address}}</td>
                 <td>{{$sitesetting->email1}}</td>
                 <td>{{$sitesetting->email2}}</td>
                 <td>{{$sitesetting->phone_number1}}</td>
                 <td>{{$sitesetting->phone_number2}}</td>
-                <td>{{$sitesetting->image}}</td>
+                <td><img src="{{asset($sitesetting->image)}}" alt="Image" style="width: 70px; height:70px"></td>
                 <td>{{$sitesetting->link1}}</td>
                 <td>{{$sitesetting->link2}}</td>
                 <td>{{$sitesetting->link3}}</td>

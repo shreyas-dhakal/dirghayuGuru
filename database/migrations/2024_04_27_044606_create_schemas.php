@@ -14,7 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("slug")->unique();
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->text("description")->nullable();
             $table->timestamps();
         });
@@ -24,8 +24,9 @@ return new class extends Migration
             $table->string("name");
             $table->string("slug")->unique();
             $table->text("designation");
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->text("description")->nullable();
+            $table->text("nmc_reg")->unique();
             $table->unsignedBigInteger('department_id'); // Add this line to create department_id column
             $table->timestamps();
         });
@@ -47,7 +48,7 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->timestamps();
         });
 
@@ -56,20 +57,20 @@ return new class extends Migration
             $table->string("title");
             $table->text("description");
             $table->text("designation");
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->timestamps();
         });
 
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->binary("logo")->nullable();
+            $table->string("logo")->nullable();
             $table->string("name");
             $table->text("address");
             $table->string("email1")->nullable();
             $table->string("email2")->nullable();
             $table->string('phone_number1')->nullable();
             $table->string('phone_number2')->nullable();
-            $table->binary("image")->nullable();
+            $table->string("image")->nullable();
             $table->string('link1')->nullable();
             $table->string('link2')->nullable();
             $table->string('link3')->nullable();

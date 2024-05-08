@@ -15,6 +15,7 @@ class Doctor extends Model
             'designation',
             'image',
             'description',
+            'nmc_reg',
             'department_id' // Add department_id to the fillable fields
     ];
 

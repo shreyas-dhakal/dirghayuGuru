@@ -11,7 +11,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{route('sitesetting.store')}}" class="card-body">
+    <form method="POST" action="{{route('sitesetting.store')}}" class="card-body" enctype="multipart/form-data">
         @csrf
         @method('post')
         

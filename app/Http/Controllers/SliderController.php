@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Slider;
+use Illuminate\Support\Facades\File;
 
 class SliderController extends Controller
 {
@@ -20,10 +21,25 @@ class SliderController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable|mimes:png,jpg,svg'
         ]);
 
-        $newslider = Slider::create($data);
+        if($request->has('image')){
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+
+            $path = 'uploads/slider/';
+            $file -> move($path ,$filename);
+        }
+
+        $newSlider = Slider::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $path.$filename
+        ]);
 
         return redirect(route('slider.index'));
     }
@@ -35,11 +51,31 @@ class SliderController extends Controller
     public function update(Slider $slider, Request $request){
         $data = $request->validate([
             'title' => 'required',
-            'description' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable|mimes:png,jpg,svg',
+            'description' => 'required'
         ]);
         
-        $slider->update($data);
+        if($request->has('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $path = 'uploads/slider/';
+            $file->move($path, $filename);
+    
+            if(File::exists($slider->image)){
+                File::delete($slider->image);
+            }
+            $slider->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'image' => $path.$filename
+            ]);
+        } else {
+            $slider->update([
+                'name' => $request->name,
+                'description' => $request->description
+            ]);
+        }
         return redirect(route('slider.index'))->with('success','Slider updated successfully');
     }
 

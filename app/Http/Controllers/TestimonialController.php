@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
+use Illuminate\Support\Facades\File;
 
 class TestimonialController extends Controller
 {
@@ -21,10 +22,27 @@ class TestimonialController extends Controller
             'title' => 'required',
             'description' => 'required',
             'designation' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable|mimes:png,jpg,svg'
         ]);
 
-        $newtestimonial = testimonial::create($data);
+        if($request->has('image')){
+
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+
+            $filename = time().'.'.$extension;
+
+            $path = 'uploads/testimonial/';
+            $file -> move($path ,$filename);
+        }
+
+        $newTestimonial = Testimonial::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'designation' => $request->designation,
+            'image' => $path.$filename
+        ]);
+
 
         return redirect(route('testimonial.index'));
     }
@@ -38,15 +56,40 @@ class TestimonialController extends Controller
             'title' => 'required',
             'description' => 'required',
             'designation' => 'required',
-            'image' => 'nullable'
+            'image' => 'nullable|mimes:png,jpg,svg'
         ]);
         
-        $testimonial->update($data);
+        if($request->has('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $path = 'uploads/testimonial/';
+            $file->move($path, $filename);
+    
+            if(File::exists($testimonial->image)){
+                File::delete($testimonial->image);
+            }
+            $testimonial->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'designation' => $request->designation,
+                'image' => $path.$filename
+            ]);
+        } else {
+            $department->update([
+                'title' => $request->title,
+                'description' => $request->description,
+                'designation' => $request->designation
+            ]);
+        }
         return redirect(route('testimonial.index'))->with('success','Testimonial updated successfully');
     }
 
     public function delete(Testimonial $testimonial){
-        $testimonial->delete(); // Delete testimonial
+        if(File::exists($testimonial->image)){
+            File::delete($testimonial->image);
+        }
+        $testimonial->delete();
         return redirect(route('testimonial.index'))->with('success','Testimonial deleted successfully');
     }
 }
