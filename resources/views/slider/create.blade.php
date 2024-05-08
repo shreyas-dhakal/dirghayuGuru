@@ -12,23 +12,23 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{route('slider.store')}}" class="max-w-md bg-white shadow-md rounded px-8 py-6">
+    <form method="POST" action="{{route('slider.store')}}" class="card-body">
         @csrf
         @method('post')
         <div class="mb-4">
             <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title</label>
-            <input type="text" name="title" id="title" placeholder="Title" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+            <input type="text" name="title" id="title" placeholder="Title" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div class="mb-4">
             <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
-            <input type="text" name="description" id="description" placeholder="Description" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+            <input type="text" name="description" id="description" placeholder="Description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div class="mb-4">
             <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-            <input type="file" name="image" id="image" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+            <input type="file" name="image" id="image" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>      
         <div class="mb-4">
-            <input type="submit" value="Save Slider" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            <input type="submit" value="Save Slider" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
         </div>
     </form>
     </div>

@@ -1,32 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Department Edit</title>
-</head>
-<body>
+<x-app-layout>
+    <div class="container-fluid">
 
-    <h1>Edit a Department</h1>
-    <form method="POST" action="{{route('department.update', ['department' => $department])}}">
-        @csrf
-        @method('put')
-        <div>
-            <label for="">Name</label>
-            <input type="text" name="name" placeholder="Name" value="<?php echo $department->name; ?>"/>
-        </div>
-        <div>
-            <label for="">Image</label>
-            <input type="file" name="image" value="<?php echo $department->image; ?>">
-        </div>        
-        <div>
-            <label for="">Description</label>
-            <input type="text" name="description" placeholder="Description" value="<?php echo $department->description; ?>" />
-        </div>
-        <div>
-            <input type="submit" value="Update Department" />
-        </div>
-    </form>
-</body>
-</html>
+        <h1 class="text-2xl font-bold mb-4">Edit Department</h1>
+        <form method="POST" action="{{ route('department.update', ['department' => $department]) }}" enctype="multipart/form-data" class="card-body">
+            @csrf
+            @method('put')
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" placeholder="Name" value="{{ $department->name }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                <input type="file" id="image" name="image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ $department->image }}">
+            </div>        
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <input type="text" id="description" name="description" placeholder="Description" value="{{ $department->description }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <input type="submit" value="Update Department" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+            </div>
+        </form>
+    </div>
+</x-app-layout>

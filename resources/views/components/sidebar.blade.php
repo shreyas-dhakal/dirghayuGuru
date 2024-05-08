@@ -54,8 +54,17 @@
             <li><a href="{{ route('user.index') }}" class="sidebar-link">
                 <i class="fa-solid fa-user"></i>
                 <span>Users</span>
-            </a></li>
-        </ul>
+            </a></li></ul>
+            <div class="sidebar-footer">
+                <a href="{{ url('/logout') }}" class="sidebar-link">
+                    <i class="fa-solid fa-sign-out"></i>
+                    <span>Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}">
+                    @csrf
+                </form>
+            </div>
+
     </aside>
     <div class="main p-3">
         <div class="text-center">

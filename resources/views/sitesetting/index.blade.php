@@ -1,5 +1,6 @@
 <x-app-layout>   
     <div class="container-fluid">
+        <h1 class="text-2xl font-bold mb-4">Site Settings</h1>
     <div>
         @if(session()->has('success'))
             <div>

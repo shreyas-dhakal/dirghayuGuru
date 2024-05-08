@@ -10,20 +10,20 @@
             </ul>
             @endif
         </div>
-        <form method="POST" action="{{ route('department.store') }}" class="max-w-md bg-white shadow-md rounded px-8 py-6">
+        <form method="POST" action="{{ route('department.store') }}" class="card-body">
             @csrf
             @method('post')
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
-                <input type="text" id="name" name="name" placeholder="Name" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+                <input type="text" id="name" name="name" placeholder="Name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div class="mb-4">
                 <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
-                <input type="file" id="image" name="image" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+                <input type="file" id="image" name="image" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 text-sm font-bold mb-2">Description</label>
-                <input type="text" id="description" name="description" placeholder="Description" class="block w-full px-4 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none focus:ring">
+                <input type="text" id="description" name="description" placeholder="Description" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div class="mb-4">
                 <button type="submit" class="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save Department</button>
@@ -32,4 +32,3 @@
     
     </div>
 </x-app-layout>
-

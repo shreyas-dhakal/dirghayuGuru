@@ -10,7 +10,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{ route('doctor.store') }}" enctype="multipart/form-data" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <form method="POST" action="{{ route('doctor.store') }}" enctype="multipart/form-data" class="card-body">
         @csrf
         @method('post')
         <div class="mb-4">

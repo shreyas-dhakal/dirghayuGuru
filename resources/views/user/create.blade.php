@@ -12,7 +12,7 @@
         </ul>
         @endif
     </div>
-    <form method="POST" action="{{route('user.store')}}" class="max-w-md bg-white shadow-md rounded px-8 py-6">
+    <form method="POST" action="{{route('user.store')}}" class="card-body">
         @csrf
         @method('post')
         <div class="mb-4">
