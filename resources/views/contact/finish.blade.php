@@ -25,10 +25,10 @@
                 <a class="nav-link" href="{{route('packages')}}">Packages</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('teams')}}">Our Team</a>
+                <a class="nav-link" href="{{route('teams')}}">Our Team</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('contact.create')}}">Contact Us</a>
+                <a class="nav-link" href="{{route('contact.create')}}">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -39,8 +39,8 @@
 @section('content')
 
 <div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-    <p style="font-size: 20px; color: #333;">Your appointment has been booked.</p>
-    <p style="font-size: 16px; color: #555;">An email has been sent to you to confirm your booking. We will reach back to you shortly.</p>
+    <p style="font-size: 20px; color: #333;">Thank you for reaching out to us.</p>
+    <p style="font-size: 16px; color: #555;">We will reach back to you shortly.</p>
 </div>
  
 @endsection

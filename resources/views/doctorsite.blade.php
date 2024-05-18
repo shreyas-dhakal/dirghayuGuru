@@ -18,7 +18,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('departments')}}">Departments</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="{{route('doctors')}}">Our Doctors</a>
             </li>
             <li class="nav-item">
@@ -35,12 +35,36 @@
       </div>
     </nav>
   </section>
-@endsection('navbar')
-@section('content')
+@endsection
 
-<div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-    <p style="font-size: 20px; color: #333;">Your appointment has been booked.</p>
-    <p style="font-size: 16px; color: #555;">An email has been sent to you to confirm your booking. We will reach back to you shortly.</p>
-</div>
- 
+@section('content')
+<section class="doctors py-5">
+    <div class="container">
+      <h2 class="our-stories text-center pb-5">
+        Our <span class="green-text">Doctors</span>
+      </h2>
+      <div class="row">
+        @foreach ($doctors as $doctor)
+        <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start">
+              <div class="pic">
+                <img src="{{asset($doctor->image)}}" class="img-fluid" alt="" />
+              </div>
+              <div class="member-info">
+                <h4>{{$doctor->name}}</h4>
+                <span>{{$doctor->designation}}</span>
+                <p>
+                  {{$doctor->description}}
+                </p>
+              </div>
+            </div>
+          </div>
+        @endforeach
+        
+        
+      </div>
+    </div>
+   
+  </section>
+
 @endsection

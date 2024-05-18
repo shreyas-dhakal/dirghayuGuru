@@ -51,6 +51,24 @@
                     <span>Appointments</span>
                 </a>
             </li>
+            <li class="sidebar-item">
+                <a href="{{ route('contact.index') }}" class="sidebar-link">
+                    <i class="fa-regular fa-address-book"></i>
+                    <span>Contacts</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('team.index') }}" class="sidebar-link">
+                    <i class="fa-regular fa-user-plus"></i>
+                    <span>Teams</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="{{ route('information.index') }}" class="sidebar-link">
+                    <i class="fa-regular fa-info"></i>
+                    <span>Information</span>
+                </a>
+            </li>
             <li><a href="{{ route('user.index') }}" class="sidebar-link">
                 <i class="fa-solid fa-user"></i>
                 <span>Users</span>

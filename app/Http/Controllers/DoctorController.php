@@ -76,7 +76,7 @@ class DoctorController extends Controller
     
             if(File::exists($doctor->image)){
                 File::delete($doctor->image);
-            }
+            
             $department->update([
                 'name' => $request->name,
                 'designation' => $request->designation,
@@ -84,7 +84,7 @@ class DoctorController extends Controller
                 'description' => $request->description,
                 'nmc_reg' => $request->nmc_reg,
                 'department_id' => $request->department_id
-            ]);
+            ]);}
         } else {
             $department->update([
                 'name' => $request->name,

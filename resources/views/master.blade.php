@@ -25,27 +25,38 @@
     rel="stylesheet" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    @vite(['resources/css/home.css'])
+    @vite(['resources/css/home.css','resources/sass/app.scss', 'resources/js/app.js', 'resources/js/site.js'])
   <title>{{$sitesettings->name}}</title>
 </head>
 <body lang="en">
 
     <!-- Start Header -->
     <header class="header">
+      @section('header')
       <!-- Topbar -->
       <section class="topbar">
         <div class="container d-flex justify-content-between align-items-center">
           <div class="text-section">
             <div class="info py-2">
-              <div class="text-sm">Appointment: {{$sitesettings->phone_number1}}</div>
-              <div class="text-sm px-5">Emergency: {{$sitesettings->phone_number2}}</div>
+              <div class="text-sm">Appointment: +977 {{$sitesettings->phone_number1}}</div>
+              <div class="text-sm px-5">Emergency: +977 {{$sitesettings->phone_number2}}</div>
             </div>
           </div>
           <div class="social-icons">
             <a href="{{$sitesettings->link1}}" class="fab fa-facebook-square mx-1"></a>
             <a href="{{$sitesettings->link2}}" class="fab fa-instagram-square mx-1"></a>
             <a href="{{$sitesettings->link3}}" class="fab fa-twitter-square mx-1"></a>
+            
           </div>
+          @if (Route::has('login') && Auth::check())
+                <div class="top-right links">
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                </div>
+            @elseif (Route::has('login') && !Auth::check())
+                <div class="top-right links">
+                    <a href="{{ url('/login') }}">Login</a>
+                </div>
+            @endif
         </div>
       </section>
       <!-- Topbar end -->
@@ -67,42 +78,8 @@
           </div>
         </nav>
       </section>
-      <section class="menu">
-        <nav class="navbar navbar-expand-md">
-          <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuCollapse"
-              aria-controls="menuCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="menuCollapse">
-              <ul class="navbar-nav gap-5">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="About.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Department.html">Departments</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Doctors.html">Our Doctors</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Packages.html">Packages</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Team.html">Our Team</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="Contact.html">Contact Us</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </section>
-      
+      @yield('navbar')
+      @show
       <!-- End Menu Section -->
     </header>
     <main>
@@ -114,15 +91,10 @@
             <div class="row">
               <div class="col-lg-4 col-md-6 footer-contact mb-md-0 mb-4">
                 <a href="index.html">
-                <img src="./images/Dirghyau Hospital White Logo-03.png" height="90" alt="log"/>
+                <img src="{{asset($informations->logo)}}" height="90" alt="log"/>
               </a>
                 <p class="mt-5">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. A dolor
-                  nesciunt molestias impedit esse quas eligendi unde repudiandae
-                  tempora facilis architecto quo, pariatur explicabo cupiditate
-                  maxime ullam animi? Dolores, incidunt consequuntur ipsum a in sunt
-                  explicabo voluptate sed voluptates et alias repellendus, mollitia
-                  recusandae maxime impedit sint suscipit quam unde!
+                  {{$informations->footer}}
                 </p>
       
                </div>
@@ -130,12 +102,12 @@
               <div class="col-lg-4 col-md-6 footer-links px-5">
                 <h4>Quick Links</h4>
                 <ul>
-                  <li><a href="index.html" class="text-decoration-none">Home</a></li>
-                  <li><a href="About.html" class="text-decoration-none">About us</a></li>
-                  <li><a href="Department.html" class="text-decoration-none">Departments</a></li>
-                  <li><a href="Doctors.html" class="text-decoration-none">Doctors</a></li>
-                  <li><a href="Packages.html" class="text-decoration-none">Packages</a></li>
-                  <li><a href="Appointment.html" class="text-decoration-none">Book an Appointment</a></li>
+                  <li><a href="{{route('home')}}" class="text-decoration-none">Home</a></li>
+                  <li><a href="{{route('about')}}" class="text-decoration-none">About us</a></li>
+                  <li><a href="{{route('departments')}}" class="text-decoration-none">Departments</a></li>
+                  <li><a href="{{route('doctors')}}" class="text-decoration-none">Doctors</a></li>
+                  <li><a href="{{route('packages')}}" class="text-decoration-none">Packages</a></li>
+                  <li><a href="{{route('appointment.create')}}" class="text-decoration-none">Book an Appointment</a></li>
                 </ul>
               </div>
       
@@ -143,16 +115,16 @@
                 <h4 class="mx-2">Our Services</h4>
                 <ul class="list-unstyled">
                   <li class="mb-2">
-                    <i class="fas fa-map-marker-alt mx-2"></i> Chabahil 7, Kathmandu
+                    <i class="fas fa-map-marker-alt mx-2"></i> {{$sitesettings->address}}
                   </li>
                   <li class="mb-2">
-                    <i class="fas fa-envelope-open-text mx-2"></i> info@dirghayu.com
+                    <i class="fas fa-envelope-open-text mx-2"></i> {{$sitesettings->email1}}
                   </li>
                   <li class="mb-2">
-                    <i class="fas fa-phone-alt mx-2"></i> +977 980-000-0000
+                    <i class="fas fa-phone-alt mx-2"></i> +977 {{$sitesettings->phone_number1}}
                   </li>
                   <li class="mb-2">
-                    <i class="fas fa-ambulance mx-2"></i>+977 980-000-0000
+                    <i class="fas fa-ambulance mx-2"></i>+977 {{$sitesettings->phone_number2}}
                   </li>
                 </ul>
               </div>

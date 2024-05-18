@@ -15,14 +15,14 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('about')}}">About Us</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="{{route('departments')}}">Departments</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('doctors')}}">Our Doctors</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('packages')}}">Packages</a>
+              <a class="nav-link" href="{{route('packages')}}">Packages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teams')}}">Our Team</a>
@@ -35,12 +35,31 @@
       </div>
     </nav>
   </section>
-@endsection('navbar')
-@section('content')
-
-<div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-    <p style="font-size: 20px; color: #333;">Your appointment has been booked.</p>
-    <p style="font-size: 16px; color: #555;">An email has been sent to you to confirm your booking. We will reach back to you shortly.</p>
-</div>
- 
 @endsection
+
+@section('content')
+<section class="Departments py-5">
+    <div class="container">
+      <h2 class="our-stories text-center pb-5">
+        Our <span class="green-text">Departments</span>
+      </h2>
+      <div class="container text-center my-3">
+        <div class="row mx-auto my-auto">
+        @foreach ($departments as $department)
+            <div class="col-sm-3 mb-4">
+            <div class="card shadow-lg">
+              <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                <div class="circle d-flex justify-content-center align-items-center">
+                  <img class="depart-image" src="{{asset($department->image)}}" alt="{{$department->name}}" />
+                </div>
+                <div class="depart-name text-center mt-5">{{$department->name}}</div>
+              </div>
+            </div>
+          </div>
+        @endforeach 
+        </div>
+      </div>
+    </div>
+    
+  </section>
+@endsection('content')

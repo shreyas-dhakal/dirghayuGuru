@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Testimonial;
+use App\Models\Package;
+use App\Models\Slider;
+use App\Models\Information;
+use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
@@ -22,10 +27,14 @@ class AppointmentController extends Controller
     }
 
     public function create()
-    {
-        $departments = Department::all(); // Fetch all departments
-
-        return view('appointment.create', ['departments' => $departments]);
+    {   $sitesettings = SiteSetting::first();
+        $departments = Department::all();
+        $doctors = Doctor::all();
+        $testimonials = Testimonial::all();
+        $packages = Package::all();
+        $sliders = Slider::all();
+        $informations = Information::first();
+        return view('appointment.create', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders','informations'));
     }
 
     public function store(Request $request){
@@ -61,7 +70,14 @@ class AppointmentController extends Controller
             'doctor' => $doctor,
         ]));
 
-        return view('appointment.finish');
+        $sitesettings = SiteSetting::first();
+        $departments = Department::all();
+        $doctors = Doctor::all();
+        $testimonials = Testimonial::all();
+        $packages = Package::all();
+        $sliders = Slider::all();
+        return view('appointment.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders'));
+
     }
 
     public function archive($id)

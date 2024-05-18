@@ -21,8 +21,8 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('doctors')}}">Our Doctors</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{route('packages')}}">Packages</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{route('packages')}}">Packages</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{route('teams')}}">Our Team</a>
@@ -35,12 +35,38 @@
       </div>
     </nav>
   </section>
-@endsection('navbar')
-@section('content')
+@endsection
 
-<div style="text-align: center; font-family: Arial, sans-serif; padding: 20px;">
-    <p style="font-size: 20px; color: #333;">Your appointment has been booked.</p>
-    <p style="font-size: 16px; color: #555;">An email has been sent to you to confirm your booking. We will reach back to you shortly.</p>
-</div>
- 
+@section('content')
+<section class="packages py-5">
+    <div class="container">
+      <h2 class="our-stories text-center pb-5">
+        Our <span class="green-text">Packages</span>
+      </h2>
+      <div class="container my-3">
+        <div class="row mx-auto my-auto">
+            @foreach ($packages as $package)
+            <div class="col-sm-4 mb-4">
+                <div class="card packages-card">
+                  <div class="card-body">
+                    <h4 class="package-title text-center mt-3 mb-5">
+                      {{$package->title}}
+                    </h4>
+                    <p class="package-desc px-4 text-center">
+                      {{$package->description}}
+                    </p>
+                    <div class="package-price align-items-center text-center mb-3 mx-auto p-3">
+                      <!-- Adjusted width and alignment -->
+                      Rs {{$package->price}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            @endforeach
+          
+        </div>
+      </div>
+    </div>
+  
+  </section>
 @endsection
