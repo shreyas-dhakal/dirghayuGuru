@@ -44,10 +44,8 @@
                 </tr>
             @endforeach
         </table>
-    </div>
-    </div>
-    <div>
         <a href="{{ route('doctor.create') }}" class="btn btn-primary">New Doctor Entry</a>
+    </div>
     </div>
 </div>
 </x-app-layout>

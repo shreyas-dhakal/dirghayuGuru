@@ -8,7 +8,7 @@ use App\Models\Department;
 class DepartmentController extends Controller
 {
     public function index(){
-        $departments = Department::with('doctors')->get(); // Eager load doctors relationship
+        $departments = Department::with('doctors')->get();
         return view('department.index',['departments' => $departments]);
     }
 

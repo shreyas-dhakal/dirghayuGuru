@@ -11,7 +11,11 @@ class SiteSettingController extends Controller
     public function index(){
         $sitesettings = sitesetting::all();
         return view('sitesetting.index',['sitesettings' => $sitesettings]);
-        
+    }
+
+    public function getSiteSetting(){
+        $sitesettings = sitesetting::first();
+        return view('home',['sitesettings' => $sitesettings]);
     }
 
     public function create(){
@@ -51,10 +55,22 @@ class SiteSettingController extends Controller
 
             $path_image = 'uploads/sitesetting/';
             $file1 -> move($path_image ,$filename_image);
+            $newsitesetting = sitesetting::create([
+                'logo'=>$path_logo.$filename_logo,
+                'name'=> $request->name,
+                'address' => $request->address,
+                'email1' => $request->email1,
+                'email2' => $request->email2,
+                'phone_number1' => $request->phone_number1,
+                'phone_number2' => $request->phone_number2,
+                'image' => $path_image.$filename_image,
+                'link1' => $request->link1,
+                'link2' => $request->link2,
+                'link3' => $request->link3,
+            ]);
         }
-        
-
-        $newsitesetting = sitesetting::create([
+        else{
+            $newsitesetting = sitesetting::create([
             'logo'=>$path_logo.$filename_logo,
             'name'=> $request->name,
             'address' => $request->address,
@@ -62,11 +78,14 @@ class SiteSettingController extends Controller
             'email2' => $request->email2,
             'phone_number1' => $request->phone_number1,
             'phone_number2' => $request->phone_number2,
-            'image' => $path_image.$filename_image,
             'link1' => $request->link1,
             'link2' => $request->link2,
             'link3' => $request->link3,
-        ]);
+            ]);
+
+        }
+
+        
 
         return redirect(route('sitesetting.index'));
     }
