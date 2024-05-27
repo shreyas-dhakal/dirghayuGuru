@@ -139,7 +139,7 @@
                 }
             }' coverflow-effect-rotate="3" coverflow-effect-stretch="3"
             coverflow-effect-depth="100" coverflow-effect-modifier="3" coverflow-effect-slide-shadows="true"
-            initial-slide="2">
+            initial-slide="1">
             @foreach ($testimonials as $testimonial)
                 <swiper-slide class="mb-5">
                     <div class="testimonial-wrap text-center p-3">

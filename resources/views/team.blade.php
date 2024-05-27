@@ -9,9 +9,9 @@
       <div class="row">
         @foreach ($teams as $team)
         <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start">
+            <div class="member d-flex align-items-start mt-4">
               <div class="pic">
-                <img src="{{asset($team->image)}}" class="img-fluid" alt="" />
+                <img src="{{asset($team->image)}}"  alt="" />
               </div>
               <div class="member-info">
                 <h4>{{$team->name}}</h4>

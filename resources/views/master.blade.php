@@ -80,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Create an Intersection Observer instance
     const observer = new IntersectionObserver(handleIntersection, {
-        threshold: 0.1 // Adjust the threshold as needed
+        threshold: 0.6// Adjust the threshold as needed
     });
 
     // Observe elements to animate
-    document.querySelectorAll('.about-body p, .about-image img, .our-stories').forEach(element => {
+    document.querySelectorAll('.about-body p, .about-image img, .our-stories, .Departments-home, .Departments-home .card-body, .doctors, .doctors .member, .testimonials .swiper-container, .packages .card , .about-section, .Departments, .Departments .cards ').forEach(element => {
         observer.observe(element);
     });
 });

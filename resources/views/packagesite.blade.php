@@ -19,6 +19,9 @@
                     <p class="package-desc px-4 text-center">
                       {{$package->description}}
                     </p>
+                    <p class="package-desc px-4 text-center">
+                      {{$package->field_1}}
+                    </p>
                     <div class="package-price align-items-center text-center mb-3 mx-auto p-3">
                       <!-- Adjusted width and alignment -->
                       Rs {{$package->price}}

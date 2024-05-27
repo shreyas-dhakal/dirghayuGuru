@@ -164,11 +164,11 @@ html{
 
 /* Apply the animation to elements */
 .fade-in {
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeIn 2s ease-out forwards;
 }
 
 .fade-in-up {
-    animation: fadeIn 1s ease-out forwards;
+    animation: fadeIn 2s ease-out forwards;
 }
 
 .our-stories {
@@ -503,6 +503,11 @@ transform: scale(1.05);
     margin-bottom: 30px;
 }
 
+.about-section p{
+    font-family: 'Oxygen', sans-serif;
+    font-size: 16px;
+}
+
 .green-text {
     color: #00C897;
 }
@@ -548,7 +553,27 @@ transform: scale(1.05);
     font-family: 'Oxygen', sans-serif;
     font-size: 16px;
   }
+
+  .contact-form .contact-button{
+    background-color: #e43e44;
+    border: none;
+  }
+
+  .contact-form .contact-button:hover{
+    background-color: #982020;
+    transform: scale(1.05);
+  }
 /* End Contact us page */
+
+#appointment-button{
+    background-color: #e43e44;
+    border: none;
+}
+
+#appointment-button:hover{
+    background-color: #982020;
+    transform: scale(1.05);
+}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

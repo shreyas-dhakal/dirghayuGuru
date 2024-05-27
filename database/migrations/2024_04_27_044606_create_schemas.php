@@ -36,14 +36,6 @@ return new class extends Migration
             $table->foreign('department_id')->references('id')->on('departments');
         });
 
-        Schema::create('packages', function (Blueprint $table) {
-            $table->id();
-            $table->string("title");
-            $table->text("description");
-            $table->double("price");
-            $table->timestamps();
-        });
-
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string("title");

@@ -11,7 +11,7 @@
         <ul class="sidebar-nav">
             <li class="sidebar-item">
                 <a href="{{ route('department.index') }}" class="sidebar-link">
-                    <i class="fa-solid fa-table-columns"></i>
+                    <i class="fa-solid fa-house-medical"></i>
                     <span>Departments</span>
                 </a>
             </li>
@@ -59,13 +59,13 @@
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('team.index') }}" class="sidebar-link">
-                    <i class="fa-regular fa-user-plus"></i>
+                    <i class="fa-solid fa-people-group"></i>
                     <span>Teams</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a href="{{ route('information.index') }}" class="sidebar-link">
-                    <i class="fa-regular fa-info"></i>
+                    <i class="fa-solid fa-circle-info"></i>
                     <span>Information</span>
                 </a>
             </li>
