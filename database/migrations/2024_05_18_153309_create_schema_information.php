@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string("logo");
             $table->text("footer");
             $table->string("story_image");
-            $table->text("story");
+            $table->text("story1");
+            $table->text("story2");
             $table->string("vision_image");
             $table->text("vision");
             $table->string("greeting_image");

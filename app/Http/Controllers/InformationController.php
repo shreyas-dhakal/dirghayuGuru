@@ -23,7 +23,8 @@ class InformationController extends Controller
             'logo' => 'required',
             'footer' => 'required',
             'story_image' => 'required',
-            'story' => 'required',
+            'story1' => 'required',
+            'story2' => 'required',
             'vision_image' => 'required',
             'vision' => 'required',
             'greeting_image' => 'required',
@@ -57,7 +58,8 @@ class InformationController extends Controller
             'logo' => $path.$filename,
             'footer' => $request->footer,
             'story_image' => $path1.$filename1,
-            'story' => $request->story,
+            'story1' => $request->story1,
+            'story2' => $request->story2,
             'vision_image' => $path2.$filename2,
             'vision' => $request->vision,
             'greeting_image' => $path3.$filename3,
@@ -76,7 +78,8 @@ class InformationController extends Controller
             'logo' => 'required|mimes:png,jpg,svg',
             'footer' => 'required',
             'story_image' => 'required|mimes:png,jpg,svg',
-            'story' => 'required',
+            'story1' => 'required',
+            'story2' => 'required',
             'vision_image' => 'required|mimes:png,jpg,svg',
             'vision' => 'required',
             'greeting_image' => 'required|mimes:png,jpg,svg',
@@ -111,11 +114,12 @@ class InformationController extends Controller
         $file3 -> move($path3 ,$filename3);
         File::delete($information->greeting_image);
 
-        $department->update([
+        $information->update([
                 'logo' => $path.$filename,
                 'footer' => $request->footer,
                 'story_image' =>$path1.$filename1,
-                'story' => $request->story,
+                'story1' => $request->story1,
+                'story2' => $request->story2,
                 'vision_image' => $path2.$filename2,
                 'vision' => $request->vision,
                 'greeting_image' => $path3.$filename3,

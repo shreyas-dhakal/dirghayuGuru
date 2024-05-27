@@ -12,7 +12,7 @@
             <table border="1" class="table table-striped">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Department Name</th>
                     <th>Image</th>
                     <th>Description</th>
                     <th>Edit</th>

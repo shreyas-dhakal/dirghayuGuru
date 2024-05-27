@@ -76,7 +76,8 @@ class AppointmentController extends Controller
         $testimonials = Testimonial::all();
         $packages = Package::all();
         $sliders = Slider::all();
-        return view('appointment.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders'));
+        $informations = Information::first();
+        return view('appointment.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders', 'informations'));
 
     }
 

@@ -29,16 +29,16 @@ body {
 }
 
 .main {
-    width: calc(100% - 70px); /* Adjust width to account for default sidebar width */
+    width: calc(100% - 70px);
     min-height: 100vh;
-    overflow-y: auto; /* Allow main content area to scroll */
+    overflow-y: auto; 
     transition: all 0.35s ease-in-out;
     background-color: #ffffff;
-    margin-left: 70px; /* Ensure main content area doesn't overlap with default sidebar */
+    margin-left: 70px; 
 }
 
 #sidebar.expand + .main {
-    margin-left: 260px; /* Adjust margin to account for expanded sidebar */
+    margin-left: 260px; 
 }
 
 
@@ -47,14 +47,14 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 70px; /* Adjust width as needed */
+    width: 70px;
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
     background-color: #726DBE;
     display: flex;
     flex-direction: column;
-    overflow-y: auto; /* Allow sidebar to scroll if necessary */
+    overflow-y: auto; 
 }
 
 

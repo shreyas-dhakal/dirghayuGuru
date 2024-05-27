@@ -14,7 +14,7 @@
             @csrf
             @method('post')
             <div class="mb-4">
-                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Department Name</label>
                 <input type="text" id="name" name="name" placeholder="Name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div class="mb-4">

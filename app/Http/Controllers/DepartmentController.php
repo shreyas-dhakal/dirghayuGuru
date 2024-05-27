@@ -8,6 +8,7 @@ use App\Models\Department;
 class DepartmentController extends Controller
 {
     public function index(){
+        // Fetch only the first 4 departments with their associated doctors
         $departments = Department::with('doctors')->get();
         return view('department.index',['departments' => $departments]);
     }
@@ -24,14 +25,11 @@ class DepartmentController extends Controller
         ]);
         
         if($request->has('image')){
-
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
-
             $filename = time().'.'.$extension;
-
             $path = 'uploads/department/';
-            $file -> move($path ,$filename);
+            $file->move($path, $filename);
         }
 
         $newDepartment = Department::create([
@@ -53,7 +51,6 @@ class DepartmentController extends Controller
             'image' => 'nullable|mimes:png,jpg,svg',
             'description' => 'nullable'
         ]);
-        
 
         if($request->has('image')){
             $file = $request->file('image');
@@ -89,7 +86,8 @@ class DepartmentController extends Controller
     }
 
     public function getDoctorsByDepartment(Department $department){
-        $doctors = $department->doctors()->get(['id', 'name','designation','nmc_reg','designation','image']); // Fetch doctors for the department
+        $doctors = $department->doctors()->get(['id', 'name', 'designation', 'nmc_reg', 'image']); // Fetch doctors for the department
         return response()->json($doctors);
-        }
+    }
 }
+?>

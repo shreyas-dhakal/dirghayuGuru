@@ -1,4 +1,4 @@
-HTML
+/* HTML
 
 * {
   margin: 0px;
@@ -8,12 +8,12 @@ html,
 body {
   position: relative;
   height: 100%;
-}
+} */
 
 /* End HTML */
 
 /* TopBar */
-.topbar {
+/* .topbar {
   background-color: #4e4d9b;
   color: white;
   font-family: "Poppins", sans-serif;
@@ -28,7 +28,7 @@ body {
 
 .topbar i{
   font-size: x-large;
-}
+} */
 /* End TopBar */
 
 
@@ -46,6 +46,12 @@ body {
 .nav-link {
   color: white;
 }
+
+.nav-item.active .nav-link {
+  color: #00C897; 
+  font-weight: bold;
+}
+
 
 swiper-slide {
   text-align: center;

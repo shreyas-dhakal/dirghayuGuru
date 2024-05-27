@@ -60,7 +60,8 @@ class ContactController extends Controller
         $testimonials = Testimonial::all();
         $packages = Package::all();
         $sliders = Slider::all();
-        return view('contact.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders'));
+        $informations = Information::first();
+        return view('contact.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders', 'informations'));
 
     }
 

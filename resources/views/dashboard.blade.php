@@ -53,4 +53,8 @@
     <div style="text-align: center; margin-top: 20px;">
         <p>Total Appointments: {{ $totalAppointments }}</p>
     </div>
+
+    <div>
+        <a href="{{route('home')}}" class="btn btn-primary mt-5">Website</a>
+    </div>
 </x-app-layout>

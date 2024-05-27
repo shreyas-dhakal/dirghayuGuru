@@ -26,8 +26,12 @@
             <input type="file" id="story_image" name="story_image" class="form-input mt-1 block w-full rounded-md border-gray-300">
         </div>     
         <div class="mb-4">
-            <label for="story" class="block text-sm font-medium text-gray-700">Story</label>
-            <input type="text" id="story" name="story" placeholder="Story" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+            <label for="story1" class="block text-sm font-medium text-gray-700">Story Para 1</label>
+            <input type="text" id="story1" name="story1" placeholder="Story" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+        <div class="mb-4">
+            <label for="story2" class="block text-sm font-medium text-gray-700">Story Para 2</label>
+            <input type="text" id="story2" name="story2" placeholder="Story" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
         <div class="mb-4">
             <label for="vision_image" class="block text-sm font-medium text-gray-700">Vision Image</label>
