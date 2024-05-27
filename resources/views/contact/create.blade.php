@@ -12,6 +12,15 @@
 </section>
 
 <div class="container mb-5">
+    <div class="mb-4">
+        @if($errors->any())
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="text-red-600">{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
+    </div>
     <div class="row my-4">
         <div class="contact-form col-md-7 ms-5 mt-3">
             <h3 class="text-center">Fill Out the Form to Reach Us</h3>

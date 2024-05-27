@@ -21,7 +21,7 @@ class AppointmentController extends Controller
 {
     public function index()
     {
-        $appointments = Appointment::all(); // Fetch all appointments
+        $appointments = Appointment::paginate(10);
 
         return view('appointment.index', ['appointments' => $appointments]);
     }

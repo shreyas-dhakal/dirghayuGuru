@@ -38,6 +38,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $appointments->links() }}
         </div>
         <div>
             <a href="{{ route('appointment.create') }}" class="btn btn-primary">Create an Appointment</a>

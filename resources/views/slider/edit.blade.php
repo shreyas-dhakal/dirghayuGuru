@@ -1,5 +1,14 @@
 <x-app-layout>
     <div class="container-fluid">
+        <div class="mb-4">
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red-600">{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </div>
 
         <h1 class="text-2xl font-bold mb-4">Edit a Slider</h1>
         <form method="POST" action="{{ route('slider.update', ['slider' => $slider]) }}" enctype="multipart/form-data" class="card-body">

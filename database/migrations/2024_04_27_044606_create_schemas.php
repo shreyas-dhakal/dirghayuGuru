@@ -86,7 +86,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('departments');
         Schema::dropIfExists('doctors');
-        Schema::dropIfExists('packages');
         Schema::dropIfExists('sliders');
         Schema::dropIfExists('testimonials');
         Schema::dropIfExists('site_settings');

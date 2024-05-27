@@ -26,7 +26,7 @@ class DoctorController extends Controller
             'image' => 'nullable|mimes:png,jpg,svg',
             'description' => 'nullable',
             'nmc_reg' => 'required',
-            'department_id' => 'nullable' // Change 'department' to 'department_id'
+            'department_id' => 'required' // Change 'department' to 'department_id'
         ]);
 
         if($request->has('image')){
@@ -64,38 +64,39 @@ class DoctorController extends Controller
             'image' => 'nullable|mimes:png,jpg,svg',
             'description' => 'nullable',
             'nmc_reg' => 'required',
-            'department_id' => 'nullable' // Change 'department' to 'department_id'
+            'department_id' => 'required'
         ]);
         
         if($request->has('image')){
+            if(File::exists($doctor->image)){
+                File::delete($doctor->image);}
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = time().'.'.$extension;
             $path = 'uploads/doctor/';
             $file->move($path, $filename);
     
-            if(File::exists($doctor->image)){
-                File::delete($doctor->image);
             
-            $department->update([
+            
+            $doctor->update([
                 'name' => $request->name,
                 'designation' => $request->designation,
                 'image' => $path.$filename,
                 'description' => $request->description,
                 'nmc_reg' => $request->nmc_reg,
                 'department_id' => $request->department_id
-            ]);}
+            ]);
         } else {
-            $department->update([
+            $doctor->update([
                 'name' => $request->name,
                 'designation' => $request->designation,
                 'description' => $request->description,
                 'nmc_reg' => $request->nmc_reg,
                 'department_id' => $request->department_id
-            ]);
+            ]);}
 
         return redirect(route('doctor.index'))->with('success','Doctor updated successfully');
-    }
+    
 }
 
     public function delete(Doctor $doctor){

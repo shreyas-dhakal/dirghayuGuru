@@ -20,11 +20,22 @@ class PackageController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'field_1' => 'nullable',
+            'field_2' => 'nullable',
+            'field_3' => 'nullable',
+            'field_4' => 'nullable',
+            'field_5' => 'nullable',
+            'field_6' => 'nullable',
+            'field_7' => 'nullable',
+            'field_8' => 'nullable',
+            'field_9' => 'nullable',
+            'field_10' => 'nullable',
+
         ]);
 
-        $newpackage = Package::create($data);
 
+        $newpackage = Package::create($data);
         return redirect(route('package.index'));
     }
 
@@ -36,7 +47,17 @@ class PackageController extends Controller
         $data = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'field_1' => 'nullable',
+            'field_2' => 'nullable',
+            'field_3' => 'nullable',
+            'field_4' => 'nullable',
+            'field_5' => 'nullable',
+            'field_6' => 'nullable',
+            'field_7' => 'nullable',
+            'field_8' => 'nullable',
+            'field_9' => 'nullable',
+            'field_10' => 'nullable',
         ]);
         
         $package->update($data);

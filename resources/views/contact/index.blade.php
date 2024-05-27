@@ -34,6 +34,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $contacts->links() }}
         </div>
     </div>
     </div>

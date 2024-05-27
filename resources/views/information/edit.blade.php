@@ -1,6 +1,15 @@
 <x-app-layout>
     <div class="container-fluid">
-        <h1 class="text-2xl font-bold mb-4">Edit a Information</h1>
+        <h1 class="text-2xl font-bold mb-4">Edit Information</h1>
+        <div class="mb-4">
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red-600">{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </div>
         <form method="POST" action="{{ route('information.update', ['information' => $information]) }}" enctype="multipart/form-data" class="card-body">
             @csrf
             @method('put')
@@ -13,7 +22,7 @@
                 <input type="text" id="footer" name="footer" placeholder="Footer" value="{{ $information->footer }}">
             </div> 
             <div class="mb-4">
-                <label for="greeting_image" class="block text-sm font-medium text-gray-700">Greeting Image</label>
+                <label for="greeting_image" class="block text-sm font-medium text-gray-700">Story Image</label>
                 <input type="file" id="greeting_image" name="greeting_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->story_image) }}">
             </div>    
             <div class="mb-4">

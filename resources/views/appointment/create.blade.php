@@ -38,6 +38,15 @@
 @endsection('navbar')
 @section('content')
 <body>
+  <div class="mb-4">
+    @if($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li class="text-red-600">{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
+</div>
     <div class="container">
         <h1 class="mt-5 mb-4">Book an Appointment</h1>
         <form method="POST" action="{{ route('appointment.store') }}">

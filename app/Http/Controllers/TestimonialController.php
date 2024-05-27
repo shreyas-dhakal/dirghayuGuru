@@ -76,7 +76,7 @@ class TestimonialController extends Controller
                 'image' => $path.$filename
             ]);
         } else {
-            $department->update([
+            $testimonial->update([
                 'title' => $request->title,
                 'description' => $request->description,
                 'designation' => $request->designation

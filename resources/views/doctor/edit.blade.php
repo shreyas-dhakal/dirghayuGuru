@@ -1,6 +1,15 @@
 <x-app-layout>
     <div class="container-fluid">
         <h1 class="text-2xl font-bold mb-4">Edit a Doctor</h1>
+        <div class="mb-4">
+            @if($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="text-red-600">{{$error}}</li>
+                @endforeach
+            </ul>
+            @endif
+        </div>
         <form method="POST" action="{{ route('doctor.update', ['doctor' => $doctor]) }}" enctype="multipart/form-data" class="card-body">
             @csrf
             @method('put')
