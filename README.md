@@ -1,5 +1,8 @@
 to run the code
-
+composer install
+npm install
+Copy .env.example to .env
+php artisan key:generate
 php artisan migrate
 php artisan db:seed
 php artisan serve
