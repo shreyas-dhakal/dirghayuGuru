@@ -6,12 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('old_appointments', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('gender');
@@ -19,16 +16,20 @@ return new class extends Migration
             $table->string('phone');
             $table->foreignId('department_id')->constrained()->onDelete('cascade');
             $table->foreignId('doctor_id')->constrained()->onDelete('cascade');
-            $table->timestamp('appointment_date');
+            $table->string('appointment_date');
+            $table->string('start_time');
+            $table->string('end_time');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('old_appointments');
+        Schema::dropIfExists('appointments');
     }
 };

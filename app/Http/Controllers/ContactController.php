@@ -73,7 +73,7 @@ class ContactController extends Controller
         unset($contact['updated_at']);
         $contactData = $contact->toArray();
     
-        \DB::table('old_contacts')->insert(array_merge($contactData, ['contact_date' => $createdAt]));
+        DB::table('old_contacts')->insert(array_merge($contactData, ['contact_date' => $createdAt]));
 
         $contact->delete();
         

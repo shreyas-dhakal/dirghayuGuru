@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,6 +16,9 @@ class Appointment extends Model
         'phone',
         'department_id',
         'doctor_id',
+        'appointment_date',
+        'start_time',
+        'end_time',
     ];
 
     public function department()
@@ -26,5 +30,4 @@ class Appointment extends Model
     {
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
-
 }

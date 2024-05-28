@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Department;
 use App\Models\Doctor;
+use App\Models\DoctorAvailability;
 use App\Models\Appointment;
 use App\Models\Testimonial;
 use App\Models\Package;
@@ -27,17 +29,19 @@ class AppointmentController extends Controller
     }
 
     public function create()
-    {   $sitesettings = SiteSetting::first();
+    {
+        $sitesettings = SiteSetting::first();
         $departments = Department::all();
         $doctors = Doctor::all();
         $testimonials = Testimonial::all();
         $packages = Package::all();
         $sliders = Slider::all();
         $informations = Information::first();
-        return view('appointment.create', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders','informations'));
+        return view('appointment.create', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders', 'informations'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'gender' => 'required|string',
@@ -45,11 +49,13 @@ class AppointmentController extends Controller
             'phone' => 'required|string|max:20',
             'department' => 'required|exists:departments,id',
             'doctor' => 'required|exists:doctors,id',
+            'appointment_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
         ]);
 
         $department = Department::findOrFail($request->input('department'));
         $doctor = Doctor::findOrFail($request->input('doctor'));
-
         $newAppointment = Appointment::create([
             'name' => $data['name'],
             'gender' => $data['gender'],
@@ -57,9 +63,12 @@ class AppointmentController extends Controller
             'phone' => $data['phone'],
             'department_id' => $department->id,
             'doctor_id' => $doctor->id,
+            'appointment_date' => $data['appointment_date'],
+            'start_time' => $data['start_time'],
+            'end_time' => $data['end_time'],
             'confirmation_token' => Str::random(40),
         ]);
-    
+
         // Send confirmation email
         Mail::to($data['email'])->send(new AppointmentConfirmation([
             'name' => $data['name'],
@@ -78,21 +87,32 @@ class AppointmentController extends Controller
         $sliders = Slider::all();
         $informations = Information::first();
         return view('appointment.finish', compact('sitesettings', 'departments', 'doctors', 'testimonials', 'packages', 'sliders', 'informations'));
-
     }
 
     public function archive($id)
     {
         $appointment = Appointment::findOrFail($id);
         $createdAt = Carbon::parse($appointment->created_at)->toDateTimeString();
+        unset($appointment['id']);
         unset($appointment['created_at']);
         unset($appointment['updated_at']);
+        unset($appointment['appointment_date']);
+        unset($appointment['start_time']);
+        unset($appointment['end_time']);
         $appointmentData = $appointment->toArray();
-    
-        \DB::table('old_appointments')->insert(array_merge($appointmentData, ['appointment_date' => $createdAt]));
+
+        DB::table('old_appointments')->insert(array_merge($appointmentData, ['appointment_date' => $createdAt]));
 
         $appointment->delete();
-        
+
         return redirect()->back()->with('success', 'Appointment archived successfully.');
+    }
+
+    public function getAvailableDates(Request $request)
+    {
+        $doctorId = $request->input('doctor_id');
+        $doctor = Doctor::findOrFail($doctorId);
+        $availableAppointments = $doctor->availabilities()->select('day', 'start_time', 'end_time')->get();
+        return response()->json($availableAppointments);
     }
 }

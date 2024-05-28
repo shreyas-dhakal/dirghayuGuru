@@ -34,4 +34,8 @@ class Doctor extends Model
     {
         return $this->belongsTo(Department::class); // Define the relationship: Doctor belongs to a Department
     }
+    public function availabilities()
+    {
+        return $this->hasMany(DoctorAvailability::class);
+    }
 }
