@@ -66,6 +66,8 @@
                 <li><strong>Phone:</strong> {{ $data['phone'] }}</li>
                 <li><strong>Department:</strong> {{ $data['department']->name }}</li>
                 <li><strong>Doctor:</strong> {{ $data['doctor']->name }}</li>
+                <li><strong>Day:</strong> {{ $data['appointment_date'] }}</li>
+                <li><strong>Time:</strong> {{ $data['start_time'] }} - {{ $data['end_time'] }}</li>
             </ul>
 
             <p>Thank you for booking with us. We will contact you shortly regarding the appointment.</p>
