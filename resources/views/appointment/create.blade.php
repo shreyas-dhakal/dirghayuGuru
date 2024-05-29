@@ -69,17 +69,12 @@
             <div class="mb-3">
                 <label for="doctor" class="form-label">Doctor</label>
                 <div class="input-group">
-                    <!-- Updated doctor dropdown with additional classes and ID -->
                     <span class="input-group-text"><i class="fas fa-user-md"></i></span>
-                    <select id="doctor" name="doctor" class="form-select" required>
+                    <select id="doctor" name="doctor" class="form-select" required disabled>
                         <option value="" disabled selected>Select Doctor</option>
-                        @foreach ($doctors as $doctor)
-                            <option value="{{ $doctor->id }}">{{ $doctor->name }}</option>
-                        @endforeach
                     </select>
                 </div>
             </div>
-            <!-- New dropdown for available dates -->
             <div class="mb-3">
                 <label for="appointment_date" class="form-label">Appointment Date & Time</label>
                 <div class="input-group">
@@ -100,6 +95,37 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        document.getElementById('department').addEventListener('change', function () {
+            var departmentId = this.value;
+            var doctorSelect = document.getElementById('doctor');
+            var appointmentDateSelect = document.getElementById('appointment_date');
+        
+            // Clear and disable existing options
+            doctorSelect.innerHTML = '<option value="" disabled selected>Select Doctor</option>';
+            doctorSelect.disabled = true;
+            appointmentDateSelect.innerHTML = '<option value="" disabled selected>Select Date & Time</option>';
+            appointmentDateSelect.disabled = true;
+        
+            // Fetch doctors for selected department via AJAX
+            if (departmentId) {
+                fetch('/get-doctors?department_id=' + departmentId)
+                    .then(response => response.json())
+                    .then(doctors => {
+                        doctors.forEach(function (doctor) {
+                            var option = document.createElement('option');
+                            option.value = doctor.id;
+                            option.text = doctor.name;
+                            doctorSelect.appendChild(option);
+                        });
+                        // Enable the doctor dropdown
+                        doctorSelect.disabled = false;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching doctors:', error);
+                    });
+            }
+        });
+
         document.getElementById('doctor').addEventListener('change', function () {
             var doctorId = this.value;
             var appointmentDateSelect = document.getElementById('appointment_date');
@@ -146,8 +172,7 @@
             document.getElementById('start_time_input').value = startTime;
             document.getElementById('end_time_input').value = endTime;
         });
-        </script>
+    </script>
         
 </body>
 @endsection
-

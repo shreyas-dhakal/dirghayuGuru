@@ -108,11 +108,17 @@ class AppointmentController extends Controller
         return redirect()->back()->with('success', 'Appointment archived successfully.');
     }
 
+    public function getDoctors(Request $request)
+    {
+        $departmentId = $request->query('department_id');
+        $doctors = Doctor::where('department_id', $departmentId)->get();
+        return response()->json($doctors);
+    }
+
     public function getAvailableDates(Request $request)
     {
-        $doctorId = $request->input('doctor_id');
-        $doctor = Doctor::findOrFail($doctorId);
-        $availableAppointments = $doctor->availabilities()->select('day', 'start_time', 'end_time')->get();
-        return response()->json($availableAppointments);
+        $doctorId = $request->query('doctor_id');
+        $appointments = DoctorAvailability::where('doctor_id', $doctorId)->get();
+        return response()->json($appointments);
     }
 }

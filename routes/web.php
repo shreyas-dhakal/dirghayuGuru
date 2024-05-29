@@ -25,6 +25,8 @@ Route::get('/doctors',[HomeController::class,'doctors'])->name('doctors');
 Route::get('/packages',[HomeController::class,'packages'])->name('packages');
 Route::get('/teams',[HomeController::class,'teams'])->name('teams');
 Route::get('/get-available-dates', [AppointmentController::class, 'getAvailableDates'])->name('get.available.dates');
+Route::get('/get-doctors', [AppointmentController::class, 'getDoctors']);
+
 
 
 
