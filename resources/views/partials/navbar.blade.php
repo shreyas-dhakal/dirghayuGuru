@@ -32,7 +32,7 @@
                 </li>
                 <!-- Online Appointment option for smaller screens -->
                 <li class="nav-item d-lg-none {{ Request::is('appointment/create') ? 'active' : '' }}">
-                    <a class="nav-link btn btn-primary text-white" href="{{ route('appointment.create') }}">Online Appointment</a>
+                    <a class="nav-link btn btn-primary" href="{{ route('appointment.create') }}">Online Appointment</a>
                 </li>
             </ul>
         </div>
