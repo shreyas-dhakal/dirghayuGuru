@@ -4,7 +4,7 @@
 <section class="py-3 py-md-5">
     <div class="container">
         <div class="row justify-content-md-center">
-            <h2 class="our-stories text-center  mt-5">
+            <h2 class="our-stories text-center mt-5">
                 Contact <span class="green-text">Us</span>
             </h2>
         </div>
@@ -49,19 +49,31 @@
                 @method('post')
                 <div class="col-12 mb-3">
                     <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
-                    <input type="text" id="name" class="form-control" name="name" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" id="name" class="form-control" name="name" required>
+                    </div>
                 </div>
                 <div class="col-12 mb-3">
                     <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                    <input type="email" id="email" class="form-control" name="email" required>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" id="email" class="form-control" name="email" required>
+                    </div>
                 </div>
                 <div class="col-12 mb-3">
                     <label for="phone" class="form-label">Phone Number</label>
-                    <input type="tel" id="phone" class="form-control" name="phone">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        <input type="tel" id="phone" class="form-control" name="phone">
+                    </div>
                 </div>
                 <div class="col-12 mb-3">
                     <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-comment"></i></span>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
                 </div>
                 <div class="col-12 mt-5 text-center">
                     <button type="submit" class="contact-button btn btn-primary">Submit</button>
