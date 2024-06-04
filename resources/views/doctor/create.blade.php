@@ -47,7 +47,15 @@
                 <div id="availabilities">
                     <div class="availability-item mb-4">
                         <label for="day" class="block text-sm font-medium text-gray-700">Day</label>
-                        <input type="text" name="availabilities[0][day]" placeholder="Day" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <select name="availabilities[0][day]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="Sunday">Sunday</option>
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednesday">Wednesday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                        </select>
                         <label for="start_time" class="block text-sm font-medium text-gray-700">Start Time</label>
                         <input type="time" name="availabilities[0][start_time]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                         <label for="end_time" class="block text-sm font-medium text-gray-700">End Time</label>
@@ -72,7 +80,15 @@
             availabilityItem.classList.add('availability-item', 'mb-4');
             availabilityItem.innerHTML = `
                 <label for="day" class="block text-sm font-medium text-gray-700">Day</label>
-                <input type="text" name="availabilities[${availabilityIndex}][day]" placeholder="Day" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                <select name="availabilities[${availabilityIndex}][day]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
                 <label for="start_time" class="block text-sm font-medium text-gray-700">Start Time</label>
                 <input type="time" name="availabilities[${availabilityIndex}][start_time]" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                 <label for="end_time" class="block text-sm font-medium text-gray-700">End Time</label>

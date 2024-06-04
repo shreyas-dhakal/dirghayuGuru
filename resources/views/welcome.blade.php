@@ -88,9 +88,9 @@
                 <div class="button-container">
                     @if (Route::has('login'))
                         @if (Auth::check())
-                            <button href="{{ url('/dashboard') }}" class="btn">Dashboard</button>
+                            <a href="{{ url('/dashboard') }}" class="btn">Dashboard</a>
                         @else
-                            <button href="{{ url('/login') }}" class="btn">Login</button>
+                            <a href="{{ url('/login') }}" class="btn">Login</a>
                         @endif
                     @endif
                 </div>
