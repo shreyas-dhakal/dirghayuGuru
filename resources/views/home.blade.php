@@ -6,13 +6,13 @@
     @foreach ($sliders as $slider)
     <div class="swiper-slide">
       <div class="swiper-slide-overlay swiperClass">
-        <img src="{{ asset($slider->image) }}" alt="{{ $slider->name }}" class="slider-image" />
+        <img src="{{ asset($slider->image) }}" alt="{{ $slider->title }}" class="slider-image" />
         <div class="container">
           <div class="overlay-text d-flex flex-column flex-lg-row align-items-lg-center">
             <div class="line d-none d-lg-block"></div>
             <div class="message py-4">
-              <h2 class="large-text text-center text-lg-start">Welcome To</h2>
-              <p class="small-text text-center text-lg-start mb-0">Dirghayu Hospital</p>
+              <h2 class="large-text text-center text-lg-start">{{ $slider->title }}</h2>
+              {{-- <p class="small-text text-center text-lg-start mb-0">Dirghayu Hospital</p> --}}
               <!-- Navigation buttons -->
               <div class="navigation-buttons mt-3 d-flex d-none d-lg-flex">
                 <div class="swiper-button-prev me-2"></div>
@@ -71,6 +71,16 @@
                                 <img class="depart-image" src="{{ asset($department->image) }}" alt="{{ $department->name }}" />
                             </div>
                             <div class="depart-name text-center mt-2">{{ $department->name }}</div>
+                            <div class="text-center mt-5">Doctors:</div>
+                                    @if ($department->doctors->count() > 0)
+                                        <ul class="list-unstyled mt-3">
+                                            @foreach ($department->doctors as $doctor)
+                                                <li>{{ $doctor->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        <p class="mt-3"></p>
+                                    @endif
                         </div>
                     </div>
                 </div>
@@ -178,6 +188,9 @@
                             <p class="package-desc px-4 text-center flex-grow-1">
                                 {{ $package->description }}
                             </p>
+                            <p class="package-desc px-4 text-center">
+                                {{$package->field_1}}
+                              </p>
                             <div class="package-price text-center mb-3 p-3">
                                 Rs. {{ $package->price }}
                             </div>

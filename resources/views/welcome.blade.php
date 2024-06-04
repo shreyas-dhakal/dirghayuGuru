@@ -12,22 +12,6 @@
 
         <!-- Styles -->
         <style>
-            .book-appointment-btn {
-                display: inline-block;
-                padding: 10px 20px;
-                background-color: #4CAF50;
-                color: white;
-                text-decoration: none;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                font-size: 16px;
-                transition: background-color 0.3s;
-            }
-
-            .book-appointment-btn:hover {
-                background-color: #45a049;
-            }
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -45,6 +29,8 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                text-align: center;
+                flex-direction: column;
             }
 
             .position-ref {
@@ -63,43 +49,50 @@
 
             .title {
                 font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            .button-container {
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background-color: #f9f9f9;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                text-decoration: none;
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #45a049;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-
-            @if (Route::has('login') && Auth::check())
-                <div class="top-right links">
-                    <a href="{{ url('/dashboard') }}">Dashboard</a>
-                </div>
-            @elseif (Route::has('login') && !Auth::check())
-                <div class="top-right links">
-                    <a href="{{ url('/login') }}">Login</a>
-                </div>
-            @endif
-
+        <div class="flex-center full-height position-ref">
             <div class="content">
-                <div class="title m-b-md">
-                    Hospital website
+                <div class="title">
+                    Dirghayu Hospital Admin Panel
                 </div>
-
-                <div class="book-an-appointment">
-                    <a href="{{ route('appointment.create') }}" class="book-appointment-btn">Book an Appointment</a>
+                <div class="button-container">
+                    @if (Route::has('login'))
+                        @if (Auth::check())
+                            <button href="{{ url('/dashboard') }}" class="btn">Dashboard</button>
+                        @else
+                            <button href="{{ url('/login') }}" class="btn">Login</button>
+                        @endif
+                    @endif
                 </div>
             </div>
         </div>
