@@ -11,7 +11,7 @@
           <div class="overlay-text d-flex flex-column flex-lg-row align-items-lg-center">
             <div class="line d-none d-lg-block"></div>
             <div class="message py-4">
-              <h2 class="large-text text-center text-lg-start">{{ $slider->title }}</h2>
+              <h2 class="large-text text-center text-lg-start">{{ $slider->description }}</h2>
               {{-- <p class="small-text text-center text-lg-start mb-0">Dirghayu Hospital</p> --}}
               <!-- Navigation buttons -->
               <div class="navigation-buttons mt-3 d-flex d-none d-lg-flex">
@@ -57,66 +57,7 @@
 
 
   <!-- Department -->
-  <section class="Departments-home py-5">
-    <div class="container">
-        <h2 class="our-stories text-center pb-5">
-            Our <span class="green-text">Departments</span>
-        </h2>
-        <div class="row text-center my-3">
-            @foreach ($departments->slice(0,4) as $department)
-                <div class="col-sm-6 col-md-3 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                            <div class="circle d-flex justify-content-center align-items-center mb-4">
-                                <img class="depart-image" src="{{ asset($department->image) }}" alt="{{ $department->name }}" />
-                            </div>
-                            <div class="depart-name text-center mt-2">{{ $department->name }}</div>
-                            <div class="text-center mt-5">Doctors:</div>
-                                    @if ($department->doctors->count() > 0)
-                                        <ul class="list-unstyled mt-3">
-                                            @foreach ($department->doctors as $doctor)
-                                                <li>{{ $doctor->name }}</li>
-                                            @endforeach
-                                        </ul>
-                                    @else
-                                        <p class="mt-3"></p>
-                                    @endif
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    <section class="about-us pt-5">
-        <div class="container">
-            <h2 class="our-stories text-center pb-4 pb-md-5">
-                Our <span class="green-text">Stories</span>
-            </h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0 text-center text-md-start">
-                    <div class="about-body">
-                        <p class="first-paragraph" style="line-height: 1.6; text-align: center;">
-                            {{ $informations->story1 }}
-                        </p>
-                        <p class="first-paragraph" style="line-height: 1.6; text-align: center;">
-                            {{ $informations->story2 }}
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <a class="about-button btn btn-primary mt-4 mb-4" href="{{ route('about') }}">Know More</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div class="about-image text-center">
-                        <img src="{{ asset($informations->story_image) }}" alt="About Us Image" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+ 
     <!-- Department -->
     <section class="Departments-home py-5">
         <div class="container">
