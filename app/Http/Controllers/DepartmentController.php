@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Models\Department;
+use App\Models\SiteSetting;
+use App\Models\Doctor;
+use App\Models\Testimonial;
+use App\Models\Package;
+use App\Models\Team;
+use App\Models\Slider;
+use App\Models\Information;
 
 class DepartmentController extends Controller
 {
@@ -89,5 +96,17 @@ class DepartmentController extends Controller
         $doctors = $department->doctors()->get(['id', 'name', 'designation', 'nmc_reg', 'image']); // Fetch doctors for the department
         return response()->json($doctors);
     }
+
+    public function showDoctors(Department $department)
+{
+    $sitesettings = SiteSetting::first();
+    $testimonials = Testimonial::all();
+    $packages = Package::all();
+    $sliders = Slider::all();
+    $informations = Information::first();
+    $doctors = $department->doctors()->get(['id', 'name', 'designation', 'nmc_reg', 'image']);
+    return view('department.doctors', compact('sitesettings', 'department', 'doctors', 'testimonials', 'packages', 'sliders', 'informations'));
+}
+
 }
 ?>

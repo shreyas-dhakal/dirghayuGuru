@@ -41,6 +41,7 @@ Route::get('/contact/create', [ContactController::class, 'create'])->name('conta
 Route::post('/contact',[ContactController::class,'store'])->name('contact.store');
 
 Route::get('/doctors/{department}', [DoctorController::class, 'getDoctorsByDepartment']);
+Route::get('/departments/{department}/doctors', [DepartmentController::class, 'showDoctors'])->name('department.doctors');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
