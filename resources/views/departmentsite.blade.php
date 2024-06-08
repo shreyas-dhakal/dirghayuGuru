@@ -9,18 +9,19 @@
             <div class="container text-center my-3">
                 <div class="row mx-auto my-auto">
                     @foreach ($departments as $department)
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <div class="card shadow-lg">
-                                <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                        <div class="card shadow-lg">
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <a href="{{ route('department.doctors', $department->id) }}" class="department-link">
                                     <div class="circle d-flex justify-content-center align-items-center">
                                         <img class="depart-image" src="{{ asset($department->image) }}"
                                             alt="{{ $department->name }}" />
                                     </div>
                                     <div class="depart-name text-center mt-5">{{ $department->name }}</div>
-                                    <a href="{{ route('department.doctors', $department->id) }}" class="btn btn-primary mt-5">Show Doctors</a>
-                                </div>
+                                </a>
                             </div>
                         </div>
+                    </div>
                     @endforeach
                 </div>
             </div>

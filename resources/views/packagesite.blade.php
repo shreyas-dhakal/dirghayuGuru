@@ -42,11 +42,6 @@
               @endforeach
           </div>
       </div>
-      <div class="row justify-content-center">
-          <div class="col-sm-6 text-center">
-              <a href="{{ route('packages') }}" class="package-button btn btn-primary mt-5">Explore All</a>
-          </div>
-      </div>
   </div>
 </section>
 @endsection

@@ -66,14 +66,17 @@
             </h2>
             <div class="row text-center my-3">
                 @foreach ($departments->slice(0, 4) as $department)
+
                     <div class="col-sm-6 col-md-3 mb-4">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                                <a href="{{ route('department.doctors', $department->id) }}" class="department-link">
                                 <div class="circle d-flex justify-content-center align-items-center mb-4">
                                     <img class="depart-image" src="{{ asset($department->image) }}"
                                         alt="{{ $department->name }}" />
                                 </div>
                                 <div class="depart-name text-center mt-2">{{ $department->name }}</div>
+                            </a>
                             </div>
                         </div>
                     </div>
