@@ -49,7 +49,14 @@
             <label for="greeting" class="block text-sm font-medium text-gray-700">Greeting</label>
             <input type="text" id="greeting" name="greeting" placeholder="Greeting" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
         </div>
-
+        <div class="mb-4">
+            <label for="message_image" class="block text-sm font-medium text-gray-700">Message Image</label>
+            <input type="file" id="message_image" name="message_image" class="form-input mt-1 block w-full rounded-md border-gray-300">
+        </div> 
+        <div class="mb-4">
+            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+            <input type="text" id="message" name="message" placeholder="Message" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
         <div>
             <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save Information</button>
         </div>

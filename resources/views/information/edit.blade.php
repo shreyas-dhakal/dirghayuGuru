@@ -22,8 +22,8 @@
                 <input type="text" id="footer" name="footer" placeholder="Footer" value="{{ $information->footer }}">
             </div> 
             <div class="mb-4">
-                <label for="greeting_image" class="block text-sm font-medium text-gray-700">Story Image</label>
-                <input type="file" id="greeting_image" name="greeting_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->story_image) }}">
+                <label for="story_image" class="block text-sm font-medium text-gray-700">Story Image</label>
+                <input type="file" id="story_image" name="story_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->story_image) }}">
             </div>    
             <div class="mb-4">
                 <label for="story1" class="block text-sm font-medium text-gray-700">Story Para 1</label>
@@ -42,12 +42,20 @@
                 <input type="text" id="vision" name="vision" placeholder="Vision" value="{{ $information->vision }}">
             </div>
             <div class="mb-4">
-                <label for="story_image" class="block text-sm font-medium text-gray-700">Greeting Image</label>
-                <input type="file" id="story_image" name="story_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->greeting_image) }}">
+                <label for="greeting_image" class="block text-sm font-medium text-gray-700">Greeting Image</label>
+                <input type="file" id="greeting_image" name="greeting_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->greeting_image) }}">
             </div>   
             <div class="mb-4">
                 <label for="greeting" class="block text-sm font-medium text-gray-700">Greeting</label>
                 <input type="text" id="greeting" name="greeting" placeholder="Greeting" value="{{ $information->greeting }}" >
+            </div>
+            <div class="mb-4">
+                <label for="message_image" class="block text-sm font-medium text-gray-700">Message Image</label>
+                <input type="file" id="message_image" name="message_image" class="form-input mt-1 block w-full rounded-md border-gray-300" value="{{ asset($information->message_image) }}">
+            </div>   
+            <div class="mb-4">
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <input type="text" id="message" name="message" placeholder="Message" value="{{ $information->message }}" >
             </div>
 
                 <input type="submit" value="Update Information" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

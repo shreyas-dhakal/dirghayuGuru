@@ -30,6 +30,8 @@ class InformationController extends Controller
                 'vision' => 'required',
                 'greeting_image' => 'required',
                 'greeting' => 'required',
+                'message_image' => 'required',
+                'message' => 'required',
             ]);
             
             $file = $request->file('logo');
@@ -56,6 +58,12 @@ class InformationController extends Controller
             $path3 = 'uploads/informations/greeting_image/';
             $file3->move($path3, $filename3);
 
+            $file4 = $request->file('message_image');
+            $extension4 = $file4->getClientOriginalExtension();
+            $filename4 = time().'5.'.$extension4;
+            $path4 = 'uploads/informations/message_image/';
+            $file4->move($path4, $filename4);
+
             $newInformation = Information::create([
                 'logo' => $path.$filename,
                 'footer' => $request->footer,
@@ -65,7 +73,9 @@ class InformationController extends Controller
                 'vision_image' => $path2.$filename2,
                 'vision' => $request->vision,
                 'greeting_image' => $path3.$filename3,
-                'greeting' => $request->greeting
+                'greeting' => $request->greeting,
+                'message_image' => $path4.$filename4,
+                'message' => $request->message,
             ]);
 
             return redirect(route('information.index'))->with('success','Information added successfully');
@@ -85,6 +95,7 @@ class InformationController extends Controller
             'story2' => 'required',
             'vision' => 'required',
             'greeting' => 'required',
+            'message' => 'required',
         ]);
     
         $updateData = [
@@ -92,7 +103,8 @@ class InformationController extends Controller
             'story1' => $request->story1,
             'story2' => $request->story2,
             'vision' => $request->vision,
-            'greeting' => $request->greeting
+            'greeting' => $request->greeting,
+            'message' => $request->message,
         ];
     
         if ($request->hasFile('logo')) {
@@ -136,6 +148,16 @@ class InformationController extends Controller
             File::delete($information->greeting_image);
             $updateData['greeting_image'] = $path3.$filename3;
         }
+
+        if ($request->hasFile('message_image')) {
+            $file4 = $request->file('message_image');
+            $extension4 = $file4->getClientOriginalExtension();
+            $filename4 = time().'5.'.$extension3;
+            $path4 = 'uploads/informations/message_image/';
+            $file4->move($path4, $filename4);
+            File::delete($information->message_image);
+            $updateData['message_image'] = $path4.$filename4;
+        }
     
         $information->update($updateData);
     
@@ -148,6 +170,7 @@ class InformationController extends Controller
         File::delete($information->story_image);
         File::delete($information->vision_image);
         File::delete($information->greeting_image);
+        File::delete($information->message_image);
         $information->delete(); // Delete information
         return redirect(route('information.index'))->with('success','Information deleted successfully');
     }

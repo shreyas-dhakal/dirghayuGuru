@@ -36,6 +36,8 @@
                         <th>Vision Image</th>
                         <th>Greeting</th>
                         <th>Greeting Image</th>
+                        <th>Message</th>
+                        <th>Message Image</th>
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -53,6 +55,8 @@
                         <td><img src="{{ asset($information->vision_image) }}" alt="Vision Image" class="img-fluid"></td>
                         <td class="truncate">{{ $information->greeting }}</td>
                         <td><img src="{{ asset($information->greeting_image) }}" alt="Greeting Image" class="img-fluid"></td>
+                        <td class="truncate">{{ $information->message }}</td>
+                        <td><img src="{{ asset($information->message_image) }}" alt="Message Image" class="img-fluid"></td>
                         <td>
                             <form action="{{ route('information.edit', ['information' => $information]) }}" method="GET" class="d-inline-block">
                                 <button type="submit" class="btn btn-primary btn-sm">Edit</button>

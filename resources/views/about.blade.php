@@ -33,5 +33,21 @@
             </div>
         </div>
     </div>
+
+    <div class="container text-center my-5">
+        <h2>
+            Message From <span class="green-text">Samrakshyak</span>
+        </h2>
+        <div class="row d-flex justify-content-between align-items-center mt-5 mb-0">
+            <div class="col-md-5 order-md-1 order-1">
+                <img src="{{ asset($informations->message_image) }}" class="about-image rounded-5 my-3" alt="Message Image">
+            </div>
+            <div class="col-md-7 order-md-2 order-2">
+                <p class="our-vision text-start mx-3 my-2" style="line-height: 1.6">
+                    {{ $informations->message }}
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 @endsection

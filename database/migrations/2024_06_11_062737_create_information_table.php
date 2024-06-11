@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text("vision");
             $table->string("greeting_image");
             $table->text("greeting");
+            $table->string("message_image");
+            $table->text("message");
             $table->timestamps();
         });
     }

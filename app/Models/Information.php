@@ -17,6 +17,8 @@ class Information extends Model
         'vision_image',
         'vision',
         'greeting_image',
-        'greeting'
+        'greeting',
+        'message_image',
+        'message',
     ];
 }
