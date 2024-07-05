@@ -36,7 +36,7 @@
 
     <div class="container text-center my-5">
         <h2>
-            Message From <span class="green-text">Samrakshyak</span>
+            Message From <span class="green-text">Custodian</span>
         </h2>
         <div class="row d-flex justify-content-between align-items-center mt-5 mb-0">
             <div class="col-md-5 order-md-1 order-1">
